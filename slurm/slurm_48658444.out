@@ -49,3 +49,21 @@ Built on Wed_Aug_20_01:58:59_PM_PDT_2025
 Cuda compilation tools, release 13.0, V13.0.88
 Build cuda_13.0.r13.0/compiler.36424714_0
 True 1
+Initial population precompiling 100% ━━━━━━━━━━━━━━━━━━━━━ 100/100 4.9 configs/s
+Initial population exploring neighbors 100% ━━━━━━━━━━━━━━ 100/100 8.4 configs/s
+Verifying initial results 100% ━━━━━━━━━━━━━━━━━━━━━━ 1000/1000 2248.0 configs/s
+Generation 1: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━ 127/127 84.9 configs/s
+Generation 1: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━ 127/127 17.7 configs/s
+Generation 1: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 67.6 configs/s
+Generation 2: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━ 110/110 82.5 configs/s
+Generation 2: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━ 110/110 17.7 configs/s
+Generation 2: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 73.6 configs/s
+Generation 3: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 84/84 29.8 configs/s
+Generation 3: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━━━ 84/84 17.8 configs/s
+Generation 3: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 70.7 configs/s
+Generation 4: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21/21 67.2 configs/s
+Generation 4: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━━━ 21/21 18.0 configs/s
+Generation 4: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 306.8         
+                                                                  configs/s     
+Benchmarking 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 467/467 2177.6 configs/s
+Job completed at: Fri Dec  5 23:04:21 EST 2025
