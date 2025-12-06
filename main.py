@@ -20,6 +20,7 @@ import helion.language as hl
     autotune_effort="full", 
     autotune_random_seed=42,
     autotune_compile_timeout=300,
+    force_autotune=True,
     static_shapes=True,
     dot_precision="tf32",
     allow_warp_specialize=True,
