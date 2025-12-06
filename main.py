@@ -16,7 +16,7 @@ import helion.language as hl
 
 
 # %%
-@helion.kernel(autotune_effort="quick")
+@helion.kernel(autotune_effort="full", autotune_random_seed=42)
 def softmax(x: torch.Tensor) -> torch.Tensor:
     """
     Simple Helion kernel wrapping PyTorch's softmax function.
