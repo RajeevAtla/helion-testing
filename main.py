@@ -24,7 +24,7 @@ import helion.language as hl
     dot_precision="tf32",
     allow_warp_specialize=True,
     persistent_reserved_sms=0,
-    autotune_max_generations=None
+    autotune_max_generations=500
 )
 def softmax(x: torch.Tensor) -> torch.Tensor:
     """
