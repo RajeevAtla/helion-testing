@@ -14,7 +14,10 @@ import helion
 from helion._testing import run_example
 import helion.language as hl
 from helion.autotuner.random_search import RandomSearch
+
+from helion.autotuner.differential_evolution import DifferentialEvolutionSearch
 from helion.autotuner.local_cache import LocalAutotuneCache
+from helion.autotuner.effort_profile import get_effort_profile
 
 def random_search_autotuner(kernel, args, **kwargs):
     # kwargs is whatever Helion passes in; you can ignore it or use it
@@ -26,9 +29,38 @@ def random_search_autotuner(kernel, args, **kwargs):
         )
     )
 
+def de_autotuner_fn(bound_kernel, args, **kwargs):
+    """
+    Use DifferentialEvolutionSearch as the search algorithm,
+    with defaults coming from the current effort profile.
+    """
+    profile = get_effort_profile(bound_kernel.settings.autotune_effort)
+
+    # Honor kernel-level autotune_max_generations if set
+    if bound_kernel.settings.autotune_max_generations is not None:
+        kwargs.setdefault("max_generations",
+                          bound_kernel.settings.autotune_max_generations)
+
+    # Fill in DE defaults from the effort profile if not already provided
+    if profile.differential_evolution is not None:
+        kwargs.setdefault("population_size",
+                          profile.differential_evolution.population_size)
+        kwargs.setdefault("max_generations",
+                          profile.differential_evolution.max_generations)
+
+    # You can also override here for extra-aggressive search:
+    kwargs.setdefault("population_size", 128)
+    kwargs.setdefault("max_generations", 80)
+    kwargs.setdefault("crossover_rate", 0.9)
+    # kwargs.setdefault("min_improvement_delta", 1e-3)
+    # kwargs.setdefault("patience", 20)
+
+    autotuner = DifferentialEvolutionSearch(bound_kernel, args, **kwargs)
+    return LocalAutotuneCache(autotuner)
+
 @helion.kernel(
     autotune_effort="full",
-    autotuner_fn=random_search_autotuner,
+    autotuner_fn=de_autotuner_fn,
     autotune_random_seed=42,
     autotune_compile_timeout=300,
     force_autotune=True,
