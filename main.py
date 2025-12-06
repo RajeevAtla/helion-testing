@@ -60,7 +60,7 @@ def main() -> None:
     """
     Main function to run the softmax kernel correctness check with example input size.
     """
-    check(4096, 2560)
+    check(4096, 4096)
 
 
 # %%
