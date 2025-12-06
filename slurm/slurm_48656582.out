@@ -1,0 +1,68 @@
+Job started at: Fri Dec  5 22:21:16 EST 2025
+apptainer version 1.2.5-1.el7
+Current git commit: 
+b512719
+Using cached apptainer image
+Container started
+no checksums to verify
+installing to /home/rra80/.local/bin
+  uv
+  uvx
+everything's installed!
+uv installed!
+uv 0.9.15
+Fri Dec  5 22:21:30 2025       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.154.05             Driver Version: 535.154.05   CUDA Version: 13.0     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  | 00000000:17:00.0 Off |                    0 |
+| N/A   30C    P0              36W / 250W |      0MiB / 40960MiB |      0%      Default |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+|   1  NVIDIA A100-PCIE-40GB          On  | 00000000:31:00.0 Off |                    0 |
+| N/A   29C    P0              33W / 250W |      0MiB / 40960MiB |      0%      Default |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+|   2  NVIDIA A100-PCIE-40GB          On  | 00000000:B1:00.0 Off |                    0 |
+| N/A   30C    P0              33W / 250W |      0MiB / 40960MiB |      0%      Default |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+|   3  NVIDIA A100-PCIE-40GB          On  | 00000000:CA:00.0 Off |                    0 |
+| N/A   30C    P0              44W / 250W |    999MiB / 40960MiB |     39%      Default |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    3   N/A  N/A      5676      C   python3                                     990MiB |
++---------------------------------------------------------------------------------------+
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2025 NVIDIA Corporation
+Built on Wed_Aug_20_01:58:59_PM_PDT_2025
+Cuda compilation tools, release 13.0, V13.0.88
+Build cuda_13.0.r13.0/compiler.36424714_0
+True 2
+Initial population precompiling 100% ━━━━━━━━━━━━━━━━━━━━━ 100/100 0.6 configs/s
+Initial population exploring neighbors 100% ━━━━━━━━━━━━━ 100/100 16.5 configs/s
+Verifying initial results 100% ━━━━━━━━━━━━━━━━━━━━━━ 1000/1000 2246.6 configs/s
+Generation 1: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━ 124/124 27.9 configs/s
+Generation 1: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━ 124/124 17.9 configs/s
+Generation 1: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 67.7 configs/s
+Generation 2: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━ 106/106 29.8 configs/s
+Generation 2: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━ 106/106 18.1 configs/s
+Generation 2: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 75.1 configs/s
+Generation 3: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86/86 33.4 configs/s
+Generation 3: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━━━ 86/86 18.0 configs/s
+Generation 3: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 69.1 configs/s
+Generation 4: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62/62 35.8 configs/s
+Generation 4: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━━━ 62/62 18.2 configs/s
+Generation 4: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 113.6         
+                                                                  configs/s     
+Benchmarking 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 463/463 2178.4 configs/s
