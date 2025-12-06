@@ -60,6 +60,9 @@ apptainer exec --nv "${PYTORCH_IMAGE}" bash -c '
   nvidia-smi
   nvcc --version
   uv run python -c "import torch; print(torch.cuda.is_available(), torch.cuda.device_count())"
+
+  # set correct libcuda
+  export TRITON_LIBCUDA_PATH=/lib64
   
   # run training
   uv run python main.py
