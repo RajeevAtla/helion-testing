@@ -1,0 +1,36 @@
+INFO:    underlay of /usr/bin/nvidia-cuda-mps-control required more than 50 (480) bind mounts
+15:4: not a valid test operator:  
+15:4: not a valid test operator: 13.0
+21:4: not a valid test operator: (
+21:4: not a valid test operator: 535.154.05
+downloading uv 0.9.15 x86_64-unknown-linux-gnu
+[31mWARN(B[m: The following commands are shadowed by other commands in your PATH: uv uvx
+Resolved 46 packages in 4ms
+Audited 41 packages in 749ms
+Testing helion correctness...
+[0s] Autotune random seed: 4054367770
+[3s] Starting autotuning process, this may take a while...
+[0s] Starting PatternSearch with initial_population=30, copies=2, max_generations=5
+[60s] Timeout after 60s compiling Config(block_sizes=[4096], indexing=['block_ptr', 'pointer', 'pointer', 'block_ptr', 'block_ptr', 'block_ptr'], load_eviction_policies=['last', 'first', '', 'last'], num_stages=8, num_warps=16, pid_type='flat', range_flattens=[None], range_multi_buffers=[None], range_num_stages=[0], range_unroll_factors=[0], range_warp_specializes=[], reduction_loops=[64])
+[61s] Timeout after 60s compiling Config(block_sizes=[128], indexing=['block_ptr', 'block_ptr', 'pointer', 'block_ptr', 'pointer', 'block_ptr'], load_eviction_policies=['first', 'first', 'first', 'first'], num_stages=3, num_warps=8, pid_type='flat', range_flattens=[None], range_multi_buffers=[None], range_num_stages=[0], range_unroll_factors=[0], range_warp_specializes=[], reduction_loops=[1024])
+[64s] Initial random population of 30, 2 starting points: timeout=2 ok=28 min=0.0543 mid=0.2458 max=1.7807 best=Config(block_sizes=[1], indexing=['pointer', 'pointer', 'pointer', 'pointer', 'pointer', 'pointer'], load_eviction_policies=['', '', '', ''], num_stages=1, num_warps=4, pid_type='flat', range_flattens=[None], range_multi_buffers=[None], range_num_stages=[0], range_unroll_factors=[0], range_warp_specializes=[], reduction_loops=[None])
+[64s] Generation 1 starting: 47 neighbors, 2 active search path(s)
+[69s] Generation 1 complete: ok=49 min=0.0369 mid=0.0543 max=0.2099 best=Config(block_sizes=[1], indexing=['block_ptr', 'pointer', 'pointer', 'pointer', 'pointer', 'pointer'], load_eviction_policies=['', '', '', ''], num_stages=1, num_warps=4, pid_type='flat', range_flattens=[None], range_multi_buffers=[None], range_num_stages=[0], range_unroll_factors=[0], range_warp_specializes=[], reduction_loops=[None])
+[69s] Generation 2 starting: 43 neighbors, 2 active search path(s)
+[73s] Generation 2 complete: ok=45 min=0.0358 mid=0.0430 max=0.1475 best=Config(block_sizes=[1], indexing=['block_ptr', 'pointer', 'pointer', 'pointer', 'pointer', 'pointer'], load_eviction_policies=['last', '', '', ''], num_stages=1, num_warps=4, pid_type='flat', range_flattens=[None], range_multi_buffers=[None], range_num_stages=[0], range_unroll_factors=[0], range_warp_specializes=[], reduction_loops=[None])
+[73s] Generation 3 starting: 41 neighbors, 2 active search path(s)
+[78s] Generation 3 complete: ok=43 min=0.0358 mid=0.0420 max=0.1403 best=Config(block_sizes=[1], indexing=['block_ptr', 'pointer', 'pointer', 'pointer', 'pointer', 'pointer'], load_eviction_policies=['last', '', '', ''], num_stages=1, num_warps=4, pid_type='flat', range_flattens=[None], range_multi_buffers=[None], range_num_stages=[0], range_unroll_factors=[0], range_warp_specializes=[], reduction_loops=[None])
+[78s] Autotuning complete in 78.1s after searching 159 configs.
+One can hardcode the best config and skip autotuning with:
+    @helion.kernel(config=helion.Config(block_sizes=[1], indexing=['block_ptr', 'pointer', 'pointer', 'pointer', 'pointer', 'pointer'], load_eviction_policies=['last', '', '', ''], num_stages=1, num_warps=4, pid_type='flat', range_flattens=[None], range_multi_buffers=[None], range_num_stages=[0], range_unroll_factors=[0], range_warp_specializes=[], reduction_loops=[None]), static_shapes=True)
+
+
+=================================================================
+Benchmark Results
+=================================================================
+Implementation       Time (ms)    Speedup        
+-----------------------------------------------------------------
+helion               0.0358       2.14x          
+torch                0.0768       1.00x (ref)    
+=================================================================
+
