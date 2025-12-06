@@ -1,0 +1,13 @@
+INFO:    underlay of /usr/bin/nvidia-smi required more than 50 (480) bind mounts
+15:4: not a valid test operator:  
+15:4: not a valid test operator: 13.0
+21:4: not a valid test operator: (
+21:4: not a valid test operator: 535.154.05
+downloading uv 0.9.15 x86_64-unknown-linux-gnu
+[31mWARN(B[m: The following commands are shadowed by other commands in your PATH: uv uvx
+Resolved 46 packages in 4ms
+Audited 41 packages in 26ms
+Testing helion correctness...
+[0s] Autotune random seed: 42
+[2s] Starting autotuning process, this may take a while...
+[0s] Starting PatternSearch with initial_population=100, copies=5, max_generations=20

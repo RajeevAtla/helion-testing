@@ -50,3 +50,28 @@ Built on Wed_Aug_20_01:58:59_PM_PDT_2025
 Cuda compilation tools, release 13.0, V13.0.88
 Build cuda_13.0.r13.0/compiler.36424714_0
 True 2
+Initial population precompiling 100% ━━━━━━━━━━━━━━━━━━━━━ 100/100 0.4 configs/s
+Initial population exploring neighbors 100% ━━━━━━━━━━━━━━ 100/100 5.0 configs/s
+Verifying initial results 100% ━━━━━━━━━━━━━━━━━━━━━━ 1000/1000 1521.2 configs/s
+Generation 1: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━ 127/127 25.3 configs/s
+Generation 1: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━ 127/127 17.4 configs/s
+Generation 1: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 57.0 configs/s
+Generation 2: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━ 110/110 59.2 configs/s
+Generation 2: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━ 110/110 17.8 configs/s
+Generation 2: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 62.6 configs/s
+Generation 3: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64/64 85.5 configs/s
+Generation 3: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━━━ 64/64 17.9 configs/s
+Generation 3: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 94.5 configs/s
+Generation 4: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21/21 20.0 configs/s
+Generation 4: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━━━ 21/21 17.5 configs/s
+Generation 4: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 353.6         
+                                                                  configs/s     
+Generation 5: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 22/22 23.0 configs/s
+Generation 5: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━━━ 22/22 18.0 configs/s
+Generation 5: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 287.4         
+                                                                  configs/s     
+Generation 6: precompiling 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23/23 27.3 configs/s
+Generation 6: exploring neighbors 100% ━━━━━━━━━━━━━━━━━━━━ 23/23 18.1 configs/s
+Generation 6: verifying top configs 100% ━━━━━━━━━━━━━━ 1000/1000 270.8         
+                                                                  configs/s     
+Benchmarking 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 465/465 2176.0 configs/s
