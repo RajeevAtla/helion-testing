@@ -1,4 +1,7 @@
-s=gpu:2
+#!/bin/bash
+#SBATCH --job-name=run-emotion-detection
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:2
 #SBATCH --time=12:00:00
 #SBATCH --mem=32G
 #SBATCH --cpus-per-task=8
