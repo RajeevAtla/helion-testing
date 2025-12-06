@@ -13,11 +13,22 @@ import torch
 import helion
 from helion._testing import run_example
 import helion.language as hl
+from helion.autotuner.random_search import RandomSearch
+from helion.autotuner.local_cache import LocalAutotuneCache
 
+def random_search_autotuner(kernel, args, **kwargs):
+    # kwargs is whatever Helion passes in; you can ignore it or use it
+    return LocalAutotuneCache(
+        RandomSearch(
+            kernel,
+            args,
+            count=2000,  # number of random configs to try (default is 1000)
+        )
+    )
 
-# %%
 @helion.kernel(
-    autotune_effort="full", 
+    autotune_effort="full",
+    autotuner_fn=random_search_autotuner,
     autotune_random_seed=42,
     autotune_compile_timeout=300,
     force_autotune=True,
