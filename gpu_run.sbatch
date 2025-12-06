@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=run-emotion-detection
+#SBATCH --job-name=run-helion
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:2
 #SBATCH --time=12:00:00
