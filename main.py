@@ -1,18 +1,58 @@
-import torch, helion, helion.language as hl
+"""
+Helion Softmax Kernel Examples
+==============================
+This example demonstrates multiple Helion kernel implementations of the softmax function,
+including a simple wrapper around PyTorch's softmax, and a numerically optimized two-pass version.
+The example also includes a check function to compare these kernels against PyTorch's
+built-in softmax for correctness.
+"""
 
-@helion.kernel()
-def matmul(x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
-    m, k = x.size()
-    k, n = y.size()
-    out = torch.empty([m, n], dtype=x.dtype, device=x.device)
+# %%
+from __future__ import annotations
+import torch
+import helion
+from helion._testing import run_example
+import helion.language as hl
 
-    for tile_m, tile_n in hl.tile([m, n]):
-        acc = hl.zeros([tile_m, tile_n], dtype=torch.float32)
-        for tile_k in hl.tile(k):
-            acc = torch.addmm(acc, x[tile_m, tile_k], y[tile_k, tile_n])
-        out[tile_m, tile_n] = acc
 
+# %%
+@helion.kernel(autotune_effort="quick")
+def softmax(x: torch.Tensor) -> torch.Tensor:
+    """
+    Simple Helion kernel wrapping PyTorch's softmax function.
+    Args:
+        x (torch.Tensor): Input tensor of shape [n, m].
+    Returns:
+        torch.Tensor: Softmax output tensor of the same shape.
+    """
+    n, _m = x.size()
+    out = torch.empty_like(x)
+    for tile_n in hl.tile(n):
+        out[tile_n, :] = torch.nn.functional.softmax(x[tile_n, :], dim=1)
     return out
 
-out = matmul(torch.randn([2048, 2048], device="cuda"),
-             torch.randn([2048, 2048], device="cuda"))
+
+# %%
+def check(m: int, n: int) -> None:
+    """
+    Runs correctness checks comparing Helion softmax kernels against PyTorch's softmax.
+    Args:
+        m (int): Number of rows in input tensor.
+        n (int): Number of columns in input tensor.
+    """
+    x = torch.randn([m, n], device="cuda", dtype=torch.float16)
+    run_example(softmax, lambda x: torch.nn.functional.softmax(x, dim=1), (x,))
+
+
+# %%
+def main() -> None:
+    """
+    Main function to run the softmax kernel correctness check with example input size.
+    """
+    check(4096, 2560)
+
+
+# %%
+if __name__ == "__main__":
+    main()
+
