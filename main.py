@@ -22,7 +22,7 @@ def random_search_autotuner(kernel, args, **kwargs):
         RandomSearch(
             kernel,
             args,
-            count=2000,  # number of random configs to try (default is 1000)
+            count=20000,  # number of random configs to try (default is 1000)
         )
     )
 
