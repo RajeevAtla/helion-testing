@@ -1,0 +1,101 @@
+INFO:    Using cached SIF image
+INFO:    underlay of /usr/bin/nvidia-smi required more than 50 (480) bind mounts
+15:4: not a valid test operator:  
+15:4: not a valid test operator: 13.0
+21:4: not a valid test operator: (
+21:4: not a valid test operator: 535.154.05
+downloading uv 0.9.15 x86_64-unknown-linux-gnu
+[31mWARN(B[m: The following commands are shadowed by other commands in your PATH: uv uvx
+Resolved 46 packages in 32ms
+Audited 41 packages in 1.44s
+Testing helion correctness...
+[0s] Autotune random seed: 4053576040
+Traceback (most recent call last):
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/autotuner/base_search.py", line 193, in _compute_baseline
+    baseline_output = self.kernel.compile_config(
+        baseline_config, allow_print=False
+    )(*new_args)
+  File "/tmp/torchinductor_rra80/uf/cufzrrdfkgzetja23hriuar5knvhwls4fvzpgm4c3uzzmx3gkgvm.py", line 48, in softmax
+    _launcher(_helion_softmax, (4096,), x, out, _RDIM_SIZE_1, _BLOCK_SIZE_0, num_warps=4, num_stages=1)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/runtime/__init__.py", line 86, in default_launcher
+    return triton_kernel.run(
+           ~~~~~~~~~~~~~~~~~^
+        *args,
+        ^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/triton/runtime/jit.py", line 713, in run
+    device = driver.active.get_current_device()
+             ^^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/triton/runtime/driver.py", line 28, in active
+    self._active = self.default
+                   ^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/triton/runtime/driver.py", line 22, in default
+    self._default = _create_driver()
+                    ~~~~~~~~~~~~~~^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/triton/runtime/driver.py", line 10, in _create_driver
+    return active_drivers[0]()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/triton/backends/nvidia/driver.py", line 719, in __init__
+    self.utils = CudaUtils()  # TODO: make static
+                 ~~~~~~~~~^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/triton/backends/nvidia/driver.py", line 66, in __init__
+    library_dirs=library_dirs(),
+                 ~~~~~~~~~~~~^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/triton/backends/nvidia/driver.py", line 47, in library_dirs
+    return [libdevice_dir, *libcuda_dirs()]
+                            ~~~~~~~~~~~~^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/triton/backends/nvidia/driver.py", line 41, in libcuda_dirs
+    assert any(os.path.exists(os.path.join(path, 'libcuda.so.1')) for path in dirs), msg
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: libcuda.so cannot found!
+Possible files are located at ['/usr/local/cuda/compat/lib/libcuda.so.1'].Please create a symlink of libcuda.so to any of the files.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/scratch/rra80/helion-testing/main.py", line 57, in <module>
+    main()
+    ~~~~^^
+  File "/scratch/rra80/helion-testing/main.py", line 52, in main
+    check(4096, 2560)
+    ~~~~~^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/main.py", line 44, in check
+    run_example(softmax, lambda x: torch.nn.functional.softmax(x, dim=1), (x,))
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/_testing.py", line 622, in run_example
+    func(*args).to(torch.float32),
+    ~~~~^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/runtime/kernel.py", line 340, in __call__
+    return self.bind(args)(*args)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/runtime/kernel.py", line 706, in __call__
+    self.autotune(args, force=False)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/runtime/kernel.py", line 584, in autotune
+    config = self.settings.autotuner_fn(self, args, **kwargs).autotune(
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/runtime/settings.py", line 253, in default_autotuner_fn
+    return cache_cls(autotuner_cls(bound_kernel, args, **kwargs))
+                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/autotuner/pattern_search.py", line 45, in __init__
+    super().__init__(kernel, args)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/autotuner/base_search.py", line 773, in __init__
+    super().__init__(kernel, args)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/autotuner/base_search.py", line 138, in __init__
+    ) = self._compute_baseline()
+        ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/scratch/rra80/helion-testing/.venv/lib/python3.13/site-packages/helion/autotuner/base_search.py", line 208, in _compute_baseline
+    raise exc.InvalidConfig(
+    ...<5 lines>...
+    ) from e
+helion.exc.InvalidConfig: Default config failed while computing baseline.
+Default config: @helion.kernel(config=helion.Config(block_sizes=[1], indexing=['pointer', 'pointer', 'pointer', 'pointer', 'pointer', 'pointer'], load_eviction_policies=['', '', '', ''], num_stages=1, num_warps=4, pid_type='flat', range_flattens=[None], range_multi_buffers=[None], range_num_stages=[0], range_unroll_factors=[0], range_warp_specializes=[], reduction_loops=[None]), static_shapes=True)
+Enable HELION_AUTOTUNE_LOG_LEVEL=DEBUG to log generated Triton code.
+To work around this error, you could set `@helion.kernel(autotune_baseline_fn=...)` to provide a custom baseline function (e.g. PyTorch eager implementation of your kernel).
